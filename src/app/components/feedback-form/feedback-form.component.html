@@ -1,0 +1,88 @@
+<div class="feedback-container">
+  <div class="header">
+    <h1>
+      Did you <span class="highlight-text-green">enjoy</span>
+      <span class="highlight-text-dark-grey"> the</span> ride<span
+        class="highlight-text-light-grey"
+        >?</span
+      >
+    </h1>
+    <p>Your feedback helps improve your next experience with us.</p>
+  </div>
+
+  <div class="rating-section">
+    <div
+      class="tooltip"
+      [style.visibility]="hoverRating !== 0 ? 'visible' : 'hidden'"
+      [style.top]="tooltipPosition.top"
+      [style.left]="tooltipPosition.left"
+    >
+      {{ starDescriptions[hoverRating - 1] }}
+    </div>
+
+    <div class="stars-with-feedback">
+      <div class="stars" (mouseleave)="resetHover()">
+        <i
+          class="star fa fa-star"
+          *ngFor="let star of stars; let index = index"
+          (click)="rate(index + 1)"
+          (mouseover)="hoverStar(index + 1)"
+          [class.selected]="index < rating"
+          [class.hovered]="index < hoverRating"
+          [attr.title]="starDescriptions[index]"
+        ></i>
+      </div>
+    </div>
+
+    <div *ngIf="rating > 0 && rating <= 3" class="categories-container">
+      <div class="categories">
+        <button
+          *ngFor="let category of categories"
+          class="category-btn"
+          (click)="toggleCategory(category)"
+          [class.selected]="selectedCategories.includes(category)"
+        >
+          {{ category }}
+        </button>
+      </div>
+    </div>
+
+    <div class="feedback-question" *ngIf="rating >= 4">
+      <ng-container *ngIf="rating === 4; else fiveStarText">
+        How was your experience?
+      </ng-container>
+      <ng-template #fiveStarText> What did we do right? </ng-template>
+    </div>
+
+    <div class="feedback-question" *ngIf="rating > 0 && rating <= 3">
+      What could we have done better?
+    </div>
+
+    <div class="textarea-wrapper">
+      <textarea
+        [(ngModel)]="feedback"
+        [placeholder]="'Share your remarks'"
+        maxlength="1000"
+      ></textarea>
+    </div>
+
+    <div
+      class="char-count"
+      [ngClass]="{ 'text-danger': feedback.length >= 1000 }"
+    >
+      Characters left: {{ 1000 - feedback.length }}/1000
+    </div>
+
+    <div *ngIf="feedback.length === 1000" class="error-message">
+      Feedback can only be less than 1000 characters long.
+    </div>
+
+    <button
+      class="submit-btn"
+      (click)="submitFeedback()"
+      [disabled]="feedback.length === 1000"
+    >
+      Submit
+    </button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="stop-locations-container">
+  <div class="location-item" *ngFor="let location of locations">
+    <div
+      class="location-icon"
+      [ngClass]="{
+        start: location.type === 'start',
+        'in-progress': location.type === 'in-progress',
+        end: location.type === 'end'
+      }"
+    >
+      <i
+        class="fas"
+        [ngClass]="{
+          'fa-arrow-up': location.type === 'start',
+          'fa-circle': location.type === 'in-progress',
+          'fa-arrow-down': location.type === 'end'
+        }"
+      ></i>
+    </div>
+    <div class="location-details">
+      <p class="location-name">{{ location.airport }}</p>
+      <p class="location-address">{{ location.address }}</p>
+      <p class="location-address">{{ location.address2 }}</p>
+      <p class="location-phone">{{ location.phone }}</p>
+    </div>
+  </div>
+</div>

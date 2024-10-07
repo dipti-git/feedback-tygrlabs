@@ -1,0 +1,15 @@
+<div class="top-bar-container">
+  <div class="left">
+    <nav class="navbar" (click)="navigateToFeedback()">
+      <div class="navbar-logo">
+        <img src="./assets/branding/logo.png" alt="Logo" class="logo-image" />
+        <span class="logo-text">RideCentric</span>
+      </div>
+    </nav>
+  </div>
+  <div class="right">
+    <button class="skip-button" (click)="skipFeedback()" *ngIf="showDiv">
+      Skip <span class="close-icon">✕</span>
+    </button>
+  </div>
+</div>

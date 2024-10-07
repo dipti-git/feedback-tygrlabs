@@ -1,0 +1,91 @@
+.stop-locations-container {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  margin-top: 20px;
+  position: relative;
+
+  .location-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 30%;
+      height: calc(100% + 10px);
+      width: 2px;
+      border-left: 2px dashed #444;
+      z-index: 0;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+
+    .location-icon {
+      z-index: 1;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      top: -18px;
+
+      &.start {
+        background-color: #27ae60;
+      }
+
+      &.in-progress {
+        background-color: #3498db;
+      }
+
+      &.end {
+        background-color: #e74c3c;
+      }
+
+      .icon {
+        width: 8px;
+        height: 8px;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+      }
+
+      .fas {
+        font-size: 20px;
+        color: #fff;
+        z-index: 1;
+      }
+    }
+
+    .location-details {
+      .common-typography {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align: left;
+        margin: 0;
+        color: #8e8e8e;
+      }
+
+      .location-name,
+      .location-address {
+        @extend .common-typography;
+      }
+
+      .location-phone {
+        @extend .common-typography;
+        color: #363636;
+      }
+    }
+  }
+}

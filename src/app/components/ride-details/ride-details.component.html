@@ -1,0 +1,51 @@
+<div class="ride-details">
+  <div class="user-info">
+    <div class="user-info-title">
+      <img [src]="user.userImage" alt="User Image" class="user-img" />
+      <h5 class="name">{{ user.name }}</h5>
+    </div>
+    <p class="reservation">
+      Reservation No
+      <span class="reservation-number">{{ user.reservationNumber }}</span>
+    </p>
+  </div>
+
+  <div class="booking-card">
+    <div class="top-row">
+      <div class="booking-info">
+        <div class="date-time">
+          <div class="date">{{ booking.date }}</div>
+          <div class="time">{{ booking.time }}</div>
+        </div>
+      </div>
+      <div class="vehicle-info">
+        <span class="vehicle-type">SUV</span>
+        <div class="passenger-info">
+          <img src="assets/ride-details/passenger.png" alt="Passenger Icon" />{{
+            booking.passengerCount
+          }}
+          <img src="assets/ride-details/suitcase.png" alt="Suitcase Icon" />
+          {{ booking.suitcaseCount }}
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="chauffeur-info">
+        <img
+          src="assets/ride-details/chauffer.png"
+          class="chauffer-img"
+          alt="Chauffeur Icon"
+        />
+        <div class="chauffeur-details">
+          <div class="chauffeur-title">Chauffer</div>
+          <div class="chauffeur-name">{{ booking.chauffeurName }}</div>
+        </div>
+      </div>
+      <div class="vehicle-image">
+        <img src="assets/ride-details/car.png" alt="SUV" />
+      </div>
+    </div>
+  </div>
+  <app-stop-locations-container></app-stop-locations-container>
+</div>
